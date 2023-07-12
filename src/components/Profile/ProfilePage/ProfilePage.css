@@ -1,0 +1,122 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 429px;
+    width: 100%;
+    align-items: center;
+}
+
+.profile-page__header {
+    margin: 0;
+    padding: 0;
+    margin-top: 93px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: auto;
+}
+
+@media screen and (max-width: 850px) {
+    .profile-page__header {
+        margin-top: 249px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .profile-page__header {
+        margin-top: 85px;
+    }
+}
+
+.profile-page__form {
+    margin-top: 123px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 410px;
+    align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+    .profile-page__form {
+        margin-top: 97px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .profile-page__form {
+        margin-top: 81px;
+        width: 81%;
+    }
+}
+
+.profile-page__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 11px;
+    line-height: auto;
+}
+
+.profile-page__container:first-of-type {
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgba(232, 232, 232, 1);
+}
+
+.profile-page__container:last-of-type {
+    margin-top: 18px;
+}
+
+.profile-page__title {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+}
+
+.profile-page__value {
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.profile-page__button {
+    margin-top: 221px;
+    border: none;
+    text-decoration: none;
+    background-color: white;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: auto;
+}
+
+@media screen and (max-width: 850px) {
+    .profile-page__button {
+        margin-top: 211px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .profile-page__button {
+        margin-top: 378px;
+        font-size: 12px;
+    }
+}
+
+.profile-page__button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.profile-page__link {
+    margin-top: 16px;
+    text-decoration: none;
+    color: rgba(238, 52, 101, 1);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: auto;
+}
+
+@media screen and (max-width: 735px) {
+    .profile-page__link {
+        font-size: 12px;
+    }
+}
