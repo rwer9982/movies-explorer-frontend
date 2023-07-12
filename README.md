@@ -1,1 +1,1 @@
-Ссылка на макет: https://disk.yandex.ru/d/gGfAexiLWWMyYQ
+Ссылка на макет: https://disk.yandex.ru/d/gGfAexiLWWMyYQ 
