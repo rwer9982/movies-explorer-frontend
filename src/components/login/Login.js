@@ -12,10 +12,10 @@ const Login = ({ }) => {
                 Рады видеть!
             </p>
             <form className="login__form">
-                <p className="register__input-name">E-mail</p>
+                <p className="login__input-name">E-mail</p>
                 <input className="login__input" required id="username" name="username" type="text" />
                 <p className="login__span">Что-то пошло не так...</p>
-                <p className="register__input-name">Пароль</p>
+                <p className="login__input-name">Пароль</p>
                 <input className="login__input" required id="password" name="password" type="password" />
                 <p className="login__span">Что-то пошло не так...</p>
                 <button className="login__submit" type="submit">Войти</button>

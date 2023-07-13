@@ -10,9 +10,9 @@ function MoviesCard({ }) {
           <h2 className="moviesCard__header">33 слова о дизайне</h2>
           <p className="moviesCard__time">1ч 47м</p>
         </div>
-        <div className="moviesCard__like-icon"></div>
+        <button className="moviesCard__like-icon"></button>
       </div>
-      <img src={testImg} className="moviesCard__image"></img>
+      <img src={testImg} className="moviesCard__image" alt="фото фильма"></img>
     </section>
   );
 }

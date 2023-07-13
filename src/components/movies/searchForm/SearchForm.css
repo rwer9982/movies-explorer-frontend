@@ -110,16 +110,7 @@
     opacity: 50%;
 }
 
-.filterCheckbox {
-    display: flex;
-    flex-direction: row;
-    width: 197px;
-    align-items: normal;
-    margin-top: 27px;
-    margin-left: 58px;
-}
-
-.filterCheckbox__button {
+.searchForm__button {
     border: none;
     background-image: url(../../../images/checkbox_enabled.png);
     background-color: rgba(249, 249, 249, 1);
@@ -127,38 +118,38 @@
     min-width: 36px;
     height: 20px;
     margin-top: 27px;
-    margin-left: 60px;
+    margin-left: 30px;
 }
 
-.filterCheckbox__button:hover {
+.searchForm__button:hover {
     cursor: pointer;
     opacity: 50%;
 }
 
 @media screen and (max-width: 850px) {
-    .filterCheckbox__button {
-        margin-left: 40px;
+    .searchForm__button {
+        margin-left: 20px;
     }
 }
 
 @media screen and (max-width: 735px) {
-    .filterCheckbox__button {
+    .searchForm__button {
         position: absolute;
         margin-left: 70px;
         margin-top: 117px;
     }
 }
 
-.filterCheckbox__button_disabled {
+.searchForm__button_disabled {
     background-image: url(../../../images/checkbox_disabled.png);
     background-color: rgba(249, 249, 249, 1);
 }
 
-.filterCheckbox__button_disabled:hover {
+.searchForm__button_disabled:hover {
     cursor: pointer;
 }
 
-.filterCheckbox__description {
+.searchForm__description {
     margin: 0;
     padding: 0;
     width: 132px;
@@ -171,11 +162,30 @@
 }
 
 @media screen and (max-width: 735px) {
-    .filterCheckbox__description {
+    .searchForm__description {
         position: absolute;
         margin-left: 104px;
         margin-top: 117px;
         font-size: 11px;
         line-height: 18px;
+    }
+}
+
+.searchForm__line {
+    border-left: 1px solid rgba(232, 232, 232, 1);
+    height: 40px;
+    margin-top: 16px;
+    margin-left: 30px;
+}
+
+@media screen and (max-width: 850px) {
+    .searchForm__line {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .searchForm__line {
+        display: none;
     }
 }
