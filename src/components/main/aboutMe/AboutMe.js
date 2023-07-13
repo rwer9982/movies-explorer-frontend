@@ -16,21 +16,21 @@ function AboutMe({ }) {
                         и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
                     <Link target="_blank" to="https://github.com/rwer9982" className="about-me__git">Github</Link>
                 </div>
-                <img src={Photo_student} className="about-me__photo"></img>
+                <img src={Photo_student} className="about-me__photo" alt="Фото студента"></img>
             </div>
             <h4 className="about-me__portfolio">Портфолио</h4>
-            <div className="about-page">
+            <Link to="#" target="_blank" className="about-page">
                 <p className="about-page__description">Статичный сайт</p>
-                <img src={arrow} className="about-page__image"></img>
-            </div>
-            <div className="about-page">
+                <img src={arrow} className="about-page__image" alt="логотип стрелка"></img>
+            </Link>
+            <Link to="#" target="_blank" className="about-page">
                 <p className="about-page__description">Адаптивный сайт</p>
-                <img src={arrow} className="about-page__image"></img>
-            </div>
-            <div className="about-page">
+                <img src={arrow} className="about-page__image" alt="логотип стрелка"></img>
+            </Link>
+            <Link to="#" target="_blank" className="about-page">
                 <p className="about-page__description">Одностраничное приложение</p>
-                <img src={arrow} className="about-page__image"></img>
-            </div>
+                <img src={arrow} className="about-page__image" alt="логотип стрелка"></img>
+            </Link>
         </section>
     );
 }

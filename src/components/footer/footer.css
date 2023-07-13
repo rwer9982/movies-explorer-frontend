@@ -34,7 +34,6 @@
     border-bottom: 1px solid rgba(160, 160, 160, 1);
     font-size: 13px;
     font-weight: 400;
-    line-height: auto;
 }
 
 @media screen and (max-width: 800px) {
@@ -80,7 +79,6 @@
     padding: 0;
     font-weight: 500;
     font-size: 13px;
-    line-height: auto;
     color: rgba(0, 0, 0, 1);
 }
 
@@ -96,7 +94,6 @@
         margin-top: 32px;
         color: rgba(160, 160, 160, 1);
         font-size: 12px;
-        line-height: auto;
     }
 }
 
@@ -128,7 +125,6 @@
     color: black;
     font-weight: 500;
     font-size: 13px;
-    line-height: auto;
 }
 
 .footer__link:hover {

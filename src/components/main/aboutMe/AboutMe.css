@@ -26,7 +26,6 @@
     margin-top: 115px;
     font-size: 22px;
     font-weight: 400;
-    line-height: auto;
     padding-bottom: 23px;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 1);
@@ -109,7 +108,6 @@
 @media screen and (max-width: 500px) {
     .about-me__name {
         font-size: 30px;
-        line-height: auto;
         margin-top: 37px;
     }
 }
@@ -175,11 +173,15 @@
     letter-spacing: -1px;
 }
 
+.about-me__git:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
 @media screen and (max-width: 800px) {
     .about-me__git {
         margin-top: 87px;
         font-size: 14px;
-        line-height: auto;
         font-weight: 500;
         letter-spacing: 0;
     }
@@ -220,11 +222,17 @@
 .about-page {
     display: flex;
     flex-direction: row;
+    text-decoration: none;
+    color: black;
     width: 99.5%;
     border-bottom: 1px solid rgba(232, 232, 232, 1);
     margin-top: 21px;
     height: 67px;
     letter-spacing: -1.2px;
+}
+
+.about-page:hover {
+    opacity: 50%;
 }
 
 @media screen and (max-width: 800px) {

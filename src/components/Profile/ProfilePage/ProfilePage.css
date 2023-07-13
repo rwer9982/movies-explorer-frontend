@@ -12,7 +12,6 @@
     margin-top: 93px;
     font-weight: 500;
     font-size: 24px;
-    line-height: auto;
 }
 
 @media screen and (max-width: 850px) {
@@ -54,7 +53,6 @@
     display: flex;
     flex-direction: row;
     font-size: 11px;
-    line-height: auto;
 }
 
 .profile-page__container:first-of-type {
@@ -85,7 +83,6 @@
     background-color: white;
     font-weight: 400;
     font-size: 13px;
-    line-height: auto;
 }
 
 @media screen and (max-width: 850px) {
@@ -112,7 +109,6 @@
     color: rgba(238, 52, 101, 1);
     font-weight: 500;
     font-size: 13px;
-    line-height: auto;
 }
 
 @media screen and (max-width: 735px) {
