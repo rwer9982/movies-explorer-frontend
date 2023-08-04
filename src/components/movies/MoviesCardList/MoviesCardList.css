@@ -1,0 +1,87 @@
+.moviesCardList {
+    padding-top: 41px;
+    max-width: 1140px;
+    min-width: 290px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+@media screen and (max-width: 850px) {
+    .moviesCardList {
+        padding-top: 41.5px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .moviesCardList {
+        padding-top: 10px;
+    }
+}
+
+.moviesCardList__section {
+    width: 100%;
+    max-width: 1140px;
+    min-width: 290px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    column-gap: 20px;
+    row-gap: 30px;
+    align-items: center;
+    justify-items: center;
+}
+
+@media screen and (max-width: 850px) {
+    .moviesCardList__section {
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        column-gap: 42px;
+        row-gap: 36px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .moviesCardList__section {
+        row-gap: 16px;
+    }
+}
+
+.moviesCardList__button-more {
+    margin-top: 80px;
+    margin-bottom: 95px;
+    width: 320px;
+    height: 36px;
+    align-self: center;
+    border: 1px solid rgba(232, 232, 232, 1);
+    font-size: 12px;
+    font-weight: 500;
+    background-color: white;
+    color: black;
+}
+
+.moviesCardList__button-more_invisible {
+    display: none;
+}
+
+@media screen and (max-width: 850px) {
+    .moviesCardList__button-more {
+        margin-bottom: 134px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .moviesCardList__button-more {
+        width: 240px;
+        border-radius: 5px;
+        margin-bottom: 154px;
+    }
+}
+
+.moviesCardList__button-more:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.moviesCardList__span {
+    text-align: center;
+    margin-bottom: 50px;
+}
