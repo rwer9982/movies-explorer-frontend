@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Main from '../main/Main.js';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Login from '../login/Login.js';
 import Register from '../register/Register.js';
 import Movies from '../movies/Movies.js';
@@ -32,31 +32,49 @@ function App() {
   const [isEnabledSavedState, setIsEnabledSavedState] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [findedSavedMovies, setFindedSavedMovies] = useState([]);
+  const path = useLocation();
+
+  //const [findedSavedMovies, setFindedSavedMovies] = useState(() => {
+  //  if (path.pathname === "/saved-movies") {
+  //    return savedMovies || []
+  //  }
+  //});
+
+
   const [findedSavedFilmsFilter, setFindedSavedFilmsFilter] = useState([]);
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(false);
   const [nothingFoundState, setNothingFoundState] = useState(false);
 
   useEffect(() => {
+    if (loggedIn) {
     checkToken();
+    }
   }, [loggedIn]);
 
-  //const tokenCheck = () => {
-  //  if (localStorage.getItem('jwt')) {
-  //    if (jwt) {
-  //      localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
-  //      setLoggedIn(true);
-  //    }
-  //  }
-  //}
+  //useEffect(() => {
+  //  checkToken();
+  //}, [localStorage.getItem(loggedIn)]);
 
   function checkToken() {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
-      setLoggedIn(true);
-    } if (!jwt) {
-      return signOut();
-    }
+    //const jwt = localStorage.getItem('jwt');
+    //if (jwt) {
+    //  localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
+    //  setLoggedIn(true);
+    //} if (!jwt) {
+    //  return signOut();
+    //}
+    //if (loggedIn) {
+      api.getProfile()
+        .then(() => {
+          localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
+          setLoggedIn(true)
+        })
+        .catch((err) => {
+          if (err.includes('401')) {
+            return signOut();
+          }
+        })
+    //}
   }
 
   const handleLogin = () => {
@@ -69,7 +87,12 @@ function App() {
         .then((userInfo) => {
           setCurrentUser(userInfo);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          console.log(err);
+          if (err.includes('401')) {
+            return signOut();
+          }
+        })
     }
   }
 
@@ -86,6 +109,12 @@ function App() {
           setSavedMovies(res);
           setFindedSavedMovies(res);
           setFindedSavedFilmsFilter(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.includes('401')) {
+            return signOut();
+          }
         })
     }
   }, [loggedIn]);
@@ -118,6 +147,7 @@ function App() {
     setIsEnabledState(false)
     setIsEnabledSavedState(false);
     setLoggedIn(false);
+    auth.signOut();
   }
 
   function handleEdit(data) {
@@ -126,7 +156,12 @@ function App() {
         console.log(res, 'данные успешно обновлены')
         setCurrentUser(res)
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err.includes('401')) {
+          return signOut();
+        }
+      })
   }
 
   function getFilms() {
@@ -177,7 +212,7 @@ function App() {
   }, [isEnabledState]);
 
   function findSavedFilms(data) {
-    const searchWord = data.search;
+    const searchWord = data.searchSaved;
     const result = savedMovies.filter(film => film.nameRU.toLowerCase().includes(searchWord.toLowerCase()) || film.nameEN.toLowerCase().includes(searchWord.toLowerCase()));
     localStorage.setItem('findedSavedFilms', JSON.stringify(result))
     localStorage.setItem('findedSavedFilmsFilter', JSON.stringify(result))
@@ -198,6 +233,12 @@ function App() {
     }
   }, [isEnabledSavedState]);
 
+  //useEffect(() => {
+  //  if (path.pathname === 'saved-movies') {
+  //    setFindedSavedMovies(savedMovies);
+  //  }
+  //});
+
   const changeEnabledState = () => {
     setIsEnabledState(!isEnabledState)
     localStorage.setItem('isEnabledShortButton', !isEnabledState)
@@ -210,31 +251,74 @@ function App() {
   function handleLikeCard(card) {
     api.createMovie(card)
       .then((res) => {
-        card.id = res._id;
         setSavedMovies((movies) => [...movies, res])
-        setFindedSavedMovies([res, ...findedSavedMovies]);
+        //setFindedSavedMovies([res, ...findedSavedMovies]);
+        //setFindedSavedFilmsFilter((movies) => [...movies, res]);
       })
-      .catch(err => console.log(err))
-      .finally(() => {
-
+      .catch((err) => {
+        console.log(err);
+        if (err.includes('401')) {
+          return signOut();
+        }
       })
   }
 
   function handleDislikeCard(card) {
-    api.deleteMovie(card.id)
+    const dislikeResult = savedMovies.find((i) => i.movieID === card.id);
+    //const dislikeResult = findedSavedMovies.find((i) => i.movieID === card.id);
+    api.deleteMovie(dislikeResult._id)
       .then((res) => {
-        setSavedMovies(savedMovies.filter((data) => data._id !== card.id))
+        setSavedMovies((state) => state.filter((s) => s.movieID !== card.id))
+        setFindedSavedMovies((state) => state.filter((s) => s.movieID !== card.id))
+        setFindedSavedFilmsFilter((state) => state.filter((s) => s.movieID !== card.id));
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err.includes('401')) {
+          return signOut();
+        }
+      })
   }
 
   function handleDeleteCard(card) {
     api.deleteMovie(card._id)
       .then((res) => {
+        setSavedMovies((state) => state.filter((s) => s._id !== card._id))
         setFindedSavedMovies((state) => state.filter((s) => s._id !== card._id))
+        setFindedSavedFilmsFilter((state) => state.filter((s) => s._id !== card._id));
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        if (err.includes('401')) {
+          return signOut();
+        }
+      })
   }
+
+  const isLiked = (card) => {
+    //const findMatches = findedSavedMovies.some(filter => filter.movieID === card.id);
+    const findMatches = savedMovies.some(filter => filter.movieID === card.id);
+    return findMatches;
+  };
+
+  //function refresh() {
+  //  setTimeout(() => {
+      //setFindedSavedMovies(savedMovies)
+      //setFindedSavedFilmsFilter(savedMovies);
+     // setIsEnabledSavedState(false)
+  //   console.log('клик')
+  //  }, 10)
+  //}
+
+  React.useEffect(() => {
+    if (path.pathname === "/saved-movies") {
+      setTimeout(() => {
+        setFindedSavedMovies(savedMovies)
+        setFindedSavedFilmsFilter(savedMovies);
+        setIsEnabledSavedState(false)
+      }, 10)
+    }
+  }, [path.pathname])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -256,17 +340,21 @@ function App() {
             handleLike={handleLikeCard}
             isVisible={isPreloaderVisible}
             nothongFound={nothingFoundState}
+            //searchWordValue={searchWordValue}
             searchWordValue={localStorage.getItem('searchWord') || ''}
+            isLiked={isLiked}
           />} />
           <Route path="/saved-movies" element={<ProtectedRouteElement
             loggedIn={loggedIn}
             element={SavedMovies}
             openMenu={handleMenuButtonClick}
-            onSubmit={findSavedFilms}
+            onSubmitSaved={findSavedFilms}
             cards={findedSavedMovies}
             isEnabledSaved={isEnabledSavedState}
             changeButtonSavedState={changeEnabledSavedState}
             handleDeleteCard={handleDeleteCard}
+            isLiked={isLiked}
+            searchWordValue={localStorage.getItem('searchWord') || ''}
           />} />
           <Route path="/profile" element={<ProtectedRouteElement
             loggedIn={loggedIn}

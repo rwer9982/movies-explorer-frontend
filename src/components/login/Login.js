@@ -57,7 +57,9 @@ const Login = ({ handleLogin, loggedIn }) => {
                     navigate('/movies', { replace: true });
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                console.log(err)
+            });
     }
 
     return (

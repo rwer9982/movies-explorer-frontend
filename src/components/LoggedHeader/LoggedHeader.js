@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function LoggedHeader({ openMenu }) {
+function LoggedHeader({ openMenu, }) {
 
     return (
         <header className="log-header">
