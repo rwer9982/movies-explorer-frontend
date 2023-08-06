@@ -7,13 +7,13 @@ import LoggedHeader from '../LoggedHeader/LoggedHeader.js';
 import Preloader from '../preloader/Preloader.js';
 
 
-function Movies({ openMenu, onSubmit, cards, isEnabled, handleDislike, handleLike, handleDeleteCard, isVisible, nothongFound, searchWordValue, changeButtonState, isEnabledSaved, changeButtonSavedState }) {
+function Movies({ isLiked, onSubmitSaved, openMenu, onSubmit, cards, isEnabled, handleDislike, handleLike, handleDeleteCard, isVisible, nothongFound, searchWordValue, changeButtonState, isEnabledSaved, changeButtonSavedState }) {
 
   return (
     <section className="movies">
       <LoggedHeader openMenu={openMenu}></LoggedHeader>
       <main>
-        <SearchForm onSubmit={onSubmit} isEnabled={isEnabled} searchWordValue={searchWordValue} changeButtonState={changeButtonState} isEnabledSaved={isEnabledSaved} changeButtonSavedState={changeButtonSavedState}></SearchForm>
+        <SearchForm onSubmitSaved={onSubmitSaved} onSubmit={onSubmit} isEnabled={isEnabled} searchWordValue={searchWordValue} changeButtonState={changeButtonState} isEnabledSaved={isEnabledSaved} changeButtonSavedState={changeButtonSavedState}></SearchForm>
         {isVisible ? <Preloader isVisible={isVisible}/> : <div></div> }
         <MoviesCardList
           cards={cards}
@@ -21,6 +21,7 @@ function Movies({ openMenu, onSubmit, cards, isEnabled, handleDislike, handleLik
           handleLike={handleLike}
           handleDeleteCard={handleDeleteCard}
           nothongFound={nothongFound}
+          isLiked={isLiked}
         ></MoviesCardList>
       </main>
       <Footer></Footer>

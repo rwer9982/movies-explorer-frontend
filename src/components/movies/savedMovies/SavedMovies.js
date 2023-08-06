@@ -4,7 +4,7 @@ import SearchForm from './searchForm/SearchForm.js';
 import MoviesCardList from './MoviesCardList/MoviesCardList.js'
 import LoggedHeader from '../../LoggedHeader/LoggedHeader.js';
 
-function SavedMovies({ openMenu, cards, isEnabled, onSubmit, handleDislike, handleDeleteCard, isEnabledSaved, changeButtonState, changeButtonSavedState }) {
+function SavedMovies({ searchWordValue, isLiked, onSubmitSaved, openMenu, cards, isEnabled, onSubmit, handleDislike, handleDeleteCard, isEnabledSaved, changeButtonState, changeButtonSavedState }) {
 
   return (
     <main className="saved-movies">
@@ -17,9 +17,12 @@ function SavedMovies({ openMenu, cards, isEnabled, onSubmit, handleDislike, hand
         isEnabledSaved={isEnabledSaved}
         changeButtonState={changeButtonState}
         changeButtonSavedState={changeButtonSavedState}
+        onSubmitSaved={onSubmitSaved}
+        searchWordValue={searchWordValue}
       ></SearchForm>
       <MoviesCardList
         cards={cards}
+        isLiked={isLiked}
         handleDislike={handleDislike}
         handleDeleteCard={handleDeleteCard}
       ></MoviesCardList>

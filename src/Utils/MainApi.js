@@ -58,6 +58,7 @@ class Api {
                 thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
                 nameRU: data.nameRU,
                 nameEN: data.nameEN,
+                movieID: data.id,
             })
         })
             .then(this._getResponseData)

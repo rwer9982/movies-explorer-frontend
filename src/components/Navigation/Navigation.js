@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Navigation({ onClose, isOpen }) {
+
   return (
     <section className={`navigation ${isOpen && "navigation_active"}`}>
         <div className="menu">

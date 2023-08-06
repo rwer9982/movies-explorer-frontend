@@ -27,14 +27,14 @@ export const authorize = (email, password) => {
     .then(getResponseData)
 };
 
-export const tokenCheck = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export const signOut = () => {
+  return fetch(`${BASE_URL}/signout`, {
     method: 'GET',
     credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      //'Authorization': `Bearer ${token}`,
     },
   })
     .then(() => getResponseData)
